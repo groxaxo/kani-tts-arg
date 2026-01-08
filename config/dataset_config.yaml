@@ -1,0 +1,14 @@
+max_duration_sec: 25
+
+hf_datasets:
+  - reponame: groxaxo/kanitts_es_tokenized_arco_full
+    name: null
+    split: train
+    text_col_name: text
+    nano_layer_1: nano_layer_1
+    nano_layer_2: nano_layer_2
+    nano_layer_3: nano_layer_3
+    nano_layer_4: nano_layer_4
+    encoded_len: encoded_len
+    speaker_id: null
+    categorical_filter: null

@@ -1,0 +1,31 @@
+base_model: nineninesix/kani-tts-400m-es
+project_name: kanitts_finetune_es_arco
+
+experiments:
+  - base:
+      model_id: kanitts_es_arco_full_3h
+      run_name: kanitts_es_arco_full_3h
+      desc: "Full Finetuning KaniTTS on AR/CO full datasets (40 epochs ~ 3h)"
+    lora_args:
+      r: 16
+      lora_alpha: 32
+      lora_dropout: 0.1
+      target_modules: [q_proj, k_proj, v_proj, out_proj, w1, w2, w3]
+      bias: "none"
+      modules_to_save: null
+      task_type: CAUSAL_LM
+      use_rslora: true
+    trainer_args:
+      num_train_epochs: 40
+      per_device_train_batch_size: 1
+      gradient_accumulation_steps: 16
+      max_grad_norm: 1
+      bf16: true
+      learning_rate: 5e-5
+      lr_scheduler_type: cosine
+      warmup_ratio: 0.1
+      weight_decay: 0.01
+      optim: adamw_torch
+      save_steps: 500
+      logging_steps: 50
+      report_to: wandb

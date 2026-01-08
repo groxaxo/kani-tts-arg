@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+nohup.out
+
+# Model cache (downloaded models will be cached by HuggingFace)
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+/tmp/
+*.wav
+*.mp3
+*.opus
+
+# Server runtime
+server.log

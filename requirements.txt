@@ -1,0 +1,27 @@
+# KaniTTS Argentinian Spanish TTS Server Dependencies
+# Tested with Python 3.10
+
+# Core ML
+torch>=2.0.0
+transformers>=4.40.0
+peft>=0.10.0
+safetensors>=0.4.0
+
+# Audio & Codec
+nemo-toolkit[tts]>=2.0.0
+soundfile>=0.12.0
+scipy>=1.10.0
+numpy>=1.24.0
+
+# API Server
+fastapi>=0.100.0
+uvicorn[standard]>=0.22.0
+pydantic>=2.0.0
+
+# Config
+omegaconf>=2.3.0
+
+# Note: This package has been tested with the kanitts-arg conda environment
+# For best results, clone an existing working environment:
+#   conda create -n kanitts-arg --clone kanitts -y
+
