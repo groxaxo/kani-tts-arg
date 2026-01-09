@@ -10,13 +10,12 @@ echo "🔑 Preparing to push agent key to ${TARGET_USER}@${TARGET_HOST}..."
 # Create temporary public key file
 echo "$AGENT_KEY" > agent_temp_key.pub
 
-# Use ssh-copy-id to push the key
-# This will handle the permissions and authorized_keys file automatically
-# It will prompt the user for the password interactively
-echo "➡️  Running ssh-copy-id..."
+# Use direct ssh to append the key
+# This works without requiring the private key file locally
+echo "➡️  Connecting to server to add key..."
 echo "🔒 You will be asked for the password for ${TARGET_USER}@${TARGET_HOST}:"
 
-ssh-copy-id -i agent_temp_key.pub -o StrictHostKeyChecking=no "${TARGET_USER}@${TARGET_HOST}"
+cat agent_temp_key.pub | ssh -o StrictHostKeyChecking=no "${TARGET_USER}@${TARGET_HOST}" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 
 EXIT_CODE=$?
 
